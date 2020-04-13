@@ -1,0 +1,270 @@
+@font-face {
+  font-family: fear;
+  src: url("NEUROPOX.TTF"); }
+body {
+  background-color: #111;
+  color: #EEE;
+  margin-bottom: 100px; }
+
+#downloader {
+  display: none; }
+
+button {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none !important;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 3px solid #3A7DB7;
+  color: #6db0ea;
+  /*padding: 10px 8px 6px 8px;*/
+  padding: 8px;
+  margin: 4px 2px;
+  font-family: fear;
+  font-size: 28px;
+  line-height: 80%;
+  transition: background-color 0.3s, color 0.5s, text-shadow 0.7s; }
+  button:active {
+    background-color: #3A7DB7;
+    color: #FFF;
+    text-shadow: 0 0 10px #EEE; }
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  border-radius: 8px;
+  border: 3px solid #3A7DB7;
+  font-size: 22px;
+  padding: 6px;
+  background-color: transparent;
+  color: #EEE; }
+
+.wrapper {
+  text-align: center;
+  width: 100%;
+  border: 5px solid #3A7DB7;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  margin: 0 auto;
+  max-width: 630px; }
+
+.header .title {
+  font-family: fear;
+  font-size: 28px;
+  line-height: 30px;
+  background-color: #3A7DB7;
+  text-shadow: rgba(0, 0, 0, 0.5) 0 0 20px; }
+.header .search {
+  width: 100%; }
+  .header .search td {
+    padding: 10px; }
+  .header .search td:last-child {
+    width: 1%; }
+  .header .search input, .header .search button {
+    height: 42px; }
+
+.floating {
+  position: fixed;
+  top: 0;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  border: 5px solid #3A7DB7;
+  background-color: #111;
+  margin-left: -5px;
+  z-index: 99999; }
+
+.player {
+  border-top: 5px solid #3A7DB7; }
+  .player table {
+    height: 72px;
+    width: 100%;
+    font-size: 30px;
+    color: #CCC; }
+  .player .skip_buttons {
+    border-top: inherit;
+    height: 64.8px; }
+  .player .pause {
+    display: none; }
+  .player .volume {
+    display: none; }
+  .player .progress {
+    width: 63%;
+    font-size: 22px;
+    background-color: inherit !important;
+    position: relative; }
+    .player .progress .current {
+      padding-left: 10px;
+      float: left;
+      line-height: 72px;
+      pointer-events: none; }
+    .player .progress .total {
+      padding-right: 10px;
+      float: right;
+      line-height: 72px;
+      pointer-events: none; }
+    .player .progress .bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background-color: #3A7DB7;
+      z-index: -1; }
+    .player .progress:hover {
+      text-shadow: inherit;
+      color: inherit; }
+  .player td {
+    border-right: 2px solid #3A7DB7;
+    width: 64px;
+    transition: background-color 0.3s, color 0.5s, text-shadow 0.7s; }
+    .player td, .player td div {
+      text-shadow: rgba(0, 0, 0, 0.5) 0 0 20px; }
+    .player td:active {
+      background-color: #3A7DB7;
+      color: #FFF;
+      text-shadow: 0 0 10px #EEE;
+      cursor: pointer; }
+    .player td:last-child {
+      border-right: none; }
+  .player .statusbar {
+    position: relative; }
+    .player .statusbar .loadingindicator {
+      position: absolute;
+      width: 10px;
+      height: 100%;
+      background-color: #3A7DB7;
+      box-shadow: 0 0 30px 10px #3A7DB7;
+      left: 16px;
+      transition: left 0.35s ease-in-out;
+      visibility: hidden; }
+    .player .statusbar .statustext {
+      height: 40px;
+      line-height: 40px;
+      font-size: 20px;
+      border-top: 5px solid #3A7DB7;
+      border-bottom-left-radius: 21px;
+      border-bottom-right-radius: 21px;
+      text-shadow: rgba(0, 0, 0, 0.5) 0 0 20px;
+      overflow: hidden; }
+
+#musiclist {
+  overflow: hidden;
+  visibility: hidden;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.5s;
+  border-radius: 30px;
+  margin: 30px auto 0 auto; }
+  #musiclist .search_results {
+    width: 100%;
+    font-family: tahoma;
+    font-size: 22px;
+    color: #CCC; }
+    #musiclist .search_results td {
+      padding: 4px 8px;
+      max-width: 330px;
+      word-break: break-word;
+      overflow-wrap: break-word; }
+    #musiclist .search_results .duration {
+      white-space: nowrap; }
+    #musiclist .search_results td:first-child, #musiclist .search_results td:last-child, #musiclist .search_results .copylink {
+      width: 64px;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color 0.3s, color 0.5s, text-shadow 0.7s; }
+      #musiclist .search_results td:first-child:active, #musiclist .search_results td:last-child:active, #musiclist .search_results .copylink:active {
+        background-color: #3A7DB7;
+        color: #FFF;
+        text-shadow: 0 0 10px #EEE; }
+    #musiclist .search_results td:first-child {
+      border-right: 3px solid #3A7DB7; }
+    #musiclist .search_results td:last-child, #musiclist .search_results .copylink {
+      border-left: 3px solid #3A7DB7; }
+    #musiclist .search_results tr {
+      height: 46px;
+      border-bottom: 5px solid #3A7DB7; }
+    #musiclist .search_results tr:first-child td:first-child {
+      border-top-left-radius: 21px; }
+    #musiclist .search_results tr:first-child td:last-child {
+      border-top-right-radius: 21px; }
+    #musiclist .search_results tr:last-child {
+      border-bottom-width: 0; }
+      #musiclist .search_results tr:last-child td:first-child {
+        border-bottom-left-radius: 21px; }
+      #musiclist .search_results tr:last-child td:last-child {
+        border-bottom-right-radius: 21px; }
+  #musiclist td, #musiclist div {
+    text-shadow: rgba(0, 0, 0, 0.5) 0 0 20px; }
+  #musiclist .notfound {
+    display: none;
+    font-family: fear;
+    font-size: 36px;
+    line-height: 64px; }
+  #musiclist .captcha_form {
+    display: none;
+    font-family: fear;
+    font-size: 36px; }
+    #musiclist .captcha_form label {
+      margin-top: 6px;
+      display: block; }
+    #musiclist .captcha_form input {
+      width: 200px;
+      height: 46px;
+      font-size: 24px;
+      font-family: sans-serif;
+      text-align: center; }
+    #musiclist .captcha_form td {
+      padding: 6px; }
+    #musiclist .captcha_form img {
+      cursor: pointer; }
+  #musiclist i {
+    font-size: 26px; }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  padding: 6px;
+  font-size: 22px;
+  text-shadow: 0 0 10px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 5px #000, 0 0 10px #000, 0 0 10px #000, 0 0 10px #000, 0 0 10px #000, 0 0 10px #000, 0 0 15px #000, 0 0 15px #000, 0 0 15px #000, 0 0 15px #000, 0 0 15px #000; }
+  .footer label {
+    position: relative;
+    z-index: 999; }
+  .footer a, .footer a:link, .footer a:visited {
+    color: #3A7DB7;
+    text-decoration: none; }
+
+.left {
+  left: 0;
+  text-align: left; }
+
+.right {
+  right: 0;
+  text-align: right; }
+
+.hq_icon {
+  line-height: 16px;
+  border-radius: 4px;
+  padding: 2px 4px;
+  background-color: #3A7DB7;
+  white-space: nowrap;
+  font-family: fear;
+  font-weight: bold;
+  font-size: 16px;
+  color: #FFF; }
+
+.lo_icon {
+  background-color: #AAA; }
+
+.captcha {
+  text-align: center; }
+  .captcha a {
+    display: block;
+    font-family: tahoma;
+    font-size: 14px; }
+
+/*# sourceMappingURL=styles-mobile.css.map */
